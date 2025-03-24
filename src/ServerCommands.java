@@ -15,7 +15,7 @@ public class ServerCommands {
     public ServerCommands(){
         try (ServerSocketChannel listenChannel = ServerSocketChannel.open()){
             listenChannel.bind(new InetSocketAddress(1068));
-            this.socketChannel = listenChannel.accept();
+            this.socketChannel = listenChannel.accept(); //executor service thingy needed here lol
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
