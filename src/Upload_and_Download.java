@@ -15,18 +15,18 @@ public class Upload_and_Download {
         }
 
         public void run() {
-            BufferedReader fis = null;
-            try {
-                fis = new BufferedReader(new FileReader(filepath));
-
-                String line = fis.readLine();
-
-                System.out.println(line);
-            } catch (FileNotFoundException e) {
-                System.out.println(e);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+//            BufferedReader fis = null;
+//            try {
+//                fis = new BufferedReader(new FileReader(filepath));
+//
+//                String line = fis.readLine();
+//
+//                System.out.println(line);
+//            } catch (FileNotFoundException e) {
+//                System.out.println(e);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
         }
     }
     public static void main(String[] args) {
