@@ -7,6 +7,8 @@ import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import static java.lang.Thread.sleep;
+
 public class TCPProjectClient {
     private static final String FILEPATH = "Client Files/";
     private static final ExecutorService threadPool = Executors.newFixedThreadPool(4);
@@ -125,6 +127,7 @@ public class TCPProjectClient {
 
     private static void uploadFile(SocketChannel channel, String fileName) {
         try {
+            //Thread.sleep(10000);                      //ITS HERE, THE THING IS HERE GUYS I FOUND IT
             File file = new File(FILEPATH + fileName);
             if (!file.exists()) {
                 System.out.println("File does not exist.");
@@ -147,6 +150,7 @@ public class TCPProjectClient {
             long bytesSent = 0;
 
             while (bytesSent < fileSize) {
+
                 buffer.clear();
                 int bytesRead = inChannel.read(buffer);
                 if (bytesRead == -1) break;
@@ -160,6 +164,8 @@ public class TCPProjectClient {
             System.out.println(receive(channel)); // upload success msg
         } catch (IOException e) {
             System.err.println("Upload failed: " + e);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 }
